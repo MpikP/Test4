@@ -1,6 +1,5 @@
 package pl.kurs.zadanie4;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PersonApp {
@@ -19,9 +18,14 @@ public class PersonApp {
         PersonService personService = new PersonService();
 
         List<Person> personList = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9);
+        List<Person> personList2 = List.of(p3, p4, p7, p8);
 
         System.out.println("----------------getTheOldestWoman-------------------");
         System.out.println(personService.getTheOldestWoman(personList));
+        System.out.println("----------------getTheOldestWoman-------------------");
+//        System.out.println(personService.getTheOldestWoman(null));
+        System.out.println("----------------getTheOldestWoman-------------------");
+//        System.out.println(personService.getTheOldestWoman(personList2));
 
         System.out.println("----------------getAverageAgeOfPeople-------------------");
         System.out.println(personService.getAverageAgeOfPeople(personList));
@@ -32,19 +36,25 @@ public class PersonApp {
 
         System.out.println("----------------getAverageAgeOfWomen-------------------");
         System.out.println(personService.getAverageAgeOfWomen(personList));
+        System.out.println("----------------getAverageAgeOfWomen-------------------");
+//        System.out.println(personService.getAverageAgeOfWomen(personList2));
+        System.out.println("----------------getAverageAgeOfWomen-------------------");
+//        System.out.println(personService.getAverageAgeOfWomen(null));
 
 
 
         System.out.println("----------------getAverageAgeOfGender-------------------");
         System.out.println(personService.getAverageAgeOfGender(personList, () -> personService.getAverageAgeOfMen(personList)));
-        System.out.println(personService.getAverageAgeOfGender(personList, () -> personService.getAverageAgeOfMen(new ArrayList<>())));
+        //System.out.println(personService.getAverageAgeOfGender(personList, () -> personService.getAverageAgeOfMen(new ArrayList<>())));
 
 
         System.out.println("----------------getDistinctCities-------------------");
         System.out.println(personService.getDistinctCities(personList));
+        System.out.println(personService.getDistinctCities(null));
 
         System.out.println("----------------getCityWithTheMostPeople-------------------");
         System.out.println(personService.getCitiesWithTheMostPeople(personList));
+        System.out.println(personService.getCitiesWithTheMostPeople(null));
 
 
     }

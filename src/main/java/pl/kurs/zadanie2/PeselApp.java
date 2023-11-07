@@ -1,6 +1,7 @@
 package pl.kurs.zadanie2;
 
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class PeselApp {
@@ -8,21 +9,25 @@ public class PeselApp {
     public static void main(String[] args) throws InvlaidPeselException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj swoje imię:");
+
             String firstName = scanner.nextLine();
-            if(firstName != null)
-                System.out.println("Długość podanego imienia wynosi " + firstName.length());
-            else
-                System.out.println("Długość podanego imienia wynosi 0");
+            System.out.println("Długość podanego imienia wynosi " + Optional.ofNullable(firstName).orElse("").length());
+            
+                
 
             System.out.println("Podaj swój PESEL:");
             String pesel = scanner.nextLine();
-            LocalDate birthDate = null;
-            if (pesel != null && pesel != "" && pesel.length()==11) {
-                birthDate = getBirthDate(pesel);
-                System.out.println("Twoja data urodenia to " + birthDate);
-            }
-            else
-                throw new InvlaidPeselException("Podano błędny PESEL.");
+            
+            pesel = Optional.ofNullable(pesel)
+                .filter(x -> x.matches("\\d{11}"))
+                .orElseThrow(() -> new InvlaidPeselException("Podano błędny PESEL."));
+        
+        
+            LocalDate birthDate;
+            birthDate = getBirthDate(pesel);
+            
+            System.out.println("Twoja data urodenia to " + birthDate);
+            
 
         scanner.close();
 
