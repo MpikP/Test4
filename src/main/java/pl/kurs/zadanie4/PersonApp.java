@@ -53,8 +53,8 @@ public class PersonApp {
         System.out.println(personService.getDistinctCities(null));
 
         System.out.println("----------------getCityWithTheMostPeople-------------------");
-        System.out.println(personService.getCitiesWithTheMostPeople(personList));
-        System.out.println(personService.getCitiesWithTheMostPeople(null));
+        System.out.println(personService.getCityWithTheMostPeople(personList));
+        System.out.println(personService.getCityWithTheMostPeople(null));
 
 
     }
